@@ -96,6 +96,9 @@ header.topo{
 /* ---------- abertura ---------- */
 .abertura{background:var(--sol);position:relative;overflow:hidden}
 .abertura-int{width:var(--medida);margin:0 auto;padding:clamp(2.8rem,6vw,4.5rem) 0}
+.abertura-grade{display:grid;grid-template-columns:1fr auto;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.abertura-grade .capa{width:clamp(140px,17vw,215px);height:auto;filter:drop-shadow(0 10px 24px rgba(42,31,6,.35))}
+@media(max-width:720px){.abertura-grade{grid-template-columns:1fr}.abertura-grade .capa{width:150px;margin-top:.5rem}}
 .selo-inst{font-family:var(--util);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#7A5A18;margin-bottom:1.2rem}
 .abertura h1{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,5.6vw,3.6rem);line-height:1.05;letter-spacing:-.02em;color:#2A1F06;max-width:16ch}
 .abertura p{margin-top:1.2rem;max-width:52ch;font-size:1.06rem;color:#3D2E0B}
@@ -188,6 +191,8 @@ footer{width:var(--medida);margin:0 auto;padding:2rem 0;font-size:.8rem;color:#7
 
 <section class="abertura">
   <div class="abertura-int">
+   <div class="abertura-grade">
+    <div>
     <p class="selo-inst">PROFEI · Universidade Estadual do Maranhão</p>
     <h1>História do Maranhão em Libras</h1>
     <p>Material didático bilíngue — Libras e português — sobre as raízes que formam a identidade maranhense: os povos originários de Upaon-Açu, a herança africana e a herança portuguesa. Com vídeos em Libras, glossários, atividades e linha do tempo, pensado para estudantes surdos dos anos finais do Ensino Fundamental.</p>
@@ -195,6 +200,10 @@ footer{width:var(--medida);margin:0 auto;padding:2rem 0;font-size:.8rem;color:#7
       <a class="btn btn-1" href="#capitulo-01">Começar pelo Capítulo 01</a>
       <a class="btn btn-2" href="https://drive.google.com/file/d/17ufmnCcm0Kg45Q2NRMG-EGyuxvB2BRhY/view" target="_blank" rel="noopener">Baixar o livro em PDF ↗</a>
     </div>
+    </div>
+    <img class="capa" src="capa-historia-do-maranhao-em-libras.png" width="210" height="280"
+         alt="Capa do livro História do Maranhão: povos originários, herança africana e portuguesa, do Professor Tiago">
+   </div>
   </div>
 </section>
 
