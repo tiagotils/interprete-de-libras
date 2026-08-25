@@ -9,6 +9,27 @@
   gtag('js', new Date());
   gtag('config', 'AW-997070869');
 </script>
+<!-- Event snippet for Recurso "clique para ligar" conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var navegou = false;
+  var ir = function () {
+    if (navegou) return;
+    navegou = true;
+    if (typeof(url) != 'undefined') { window.location = url; }
+  };
+  try {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-997070869/UzwBCM6PmuccEJWwuNsD',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': ir
+    });
+  } catch (e) { ir(); }
+  setTimeout(ir, 900);
+  return false;
+}
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -453,7 +474,7 @@ footer{width:var(--medida);margin:0 auto;padding:2rem 0;font-size:.8rem;color:#7
     <img class="selo" src="logo-tiago-tils-claro.png" width="760" height="448" loading="lazy" alt="Tiago TILS">
     <h2>Créditos e uso</h2>
     <p>VERAS, Tiago. <em>História do Maranhão em Libras</em>: povos originários, herança africana e portuguesa. Produto educacional do Mestrado Profissional em Educação Inclusiva em Rede (PROFEI), Universidade Estadual do Maranhão, 2026. Bilíngue: história em português e Libras.</p>
-    <p>Material de uso educacional. Para usar em formações, oficinas ou projetos institucionais, entre em contato pelo <a href="https://wa.me/5598988253316">WhatsApp (98) 98825-3316</a> ou pelo <a href="https://instagram.com/tiagotils">Instagram @tiagotils</a>.</p>
+    <p>Material de uso educacional. Para usar em formações, oficinas ou projetos institucionais, entre em contato pelo <a href="https://wa.me/5598988253316" onclick="return gtag_report_conversion('https://wa.me/5598988253316');">WhatsApp (98) 98825-3316</a> ou pelo <a href="https://instagram.com/tiagotils">Instagram @tiagotils</a>.</p>
   </div>
 </section>
 

@@ -9,6 +9,35 @@
   gtag('js', new Date());
   gtag('config', 'AW-997070869');
 </script>
+<!-- Event snippet for Visualização de página conversion page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-997070869/mgsVCK7ipeccEJWwuNsD',
+      'value': 1.0,
+      'currency': 'BRL'
+  });
+</script>
+<!-- Event snippet for Recurso "clique para ligar" conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var navegou = false;
+  var ir = function () {
+    if (navegou) return;
+    navegou = true;
+    if (typeof(url) != 'undefined') { window.location = url; }
+  };
+  try {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-997070869/UzwBCM6PmuccEJWwuNsD',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': ir
+    });
+  } catch (e) { ir(); }
+  setTimeout(ir, 900);
+  return false;
+}
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -273,7 +302,7 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
       <h1>Intérprete de Libras em <em>São Luís</em></h1>
       <p class="chamada">Tradução e interpretação entre a Língua Brasileira de Sinais e o português para eventos, escolas, universidades, audiências e solenidades. Atuo desde 2010, com o rigor terminológico de quem também pesquisa a língua.</p>
       <div class="acoes">
-        <a class="btn btn-1" href="https://wa.me/5598988253316">Solicitar orçamento</a>
+        <a class="btn btn-1" href="https://wa.me/5598988253316" onclick="return gtag_report_conversion('https://wa.me/5598988253316');">Solicitar orçamento</a>
         <a class="btn btn-2" href="#servicos">Ver serviços</a>
       </div>
     </div>
@@ -480,7 +509,7 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
     <h2>Contratar intérprete de Libras em São Luís</h2>
     <p style="max-width:54ch;margin-top:1rem;color:#D5DEE8">Envie a data, o local, a duração e o tema do evento. Respondo com orçamento e disponibilidade.</p>
     <ul class="dados">
-      <li><span>WhatsApp</span><a href="https://wa.me/5598988253316">(98) 98825-3316</a></li>
+      <li><span>WhatsApp</span><a href="https://wa.me/5598988253316" onclick="return gtag_report_conversion('https://wa.me/5598988253316');">(98) 98825-3316</a></li>
       <li><span>Instagram</span><a href="https://instagram.com/tiagotils" rel="me">@tiagotils</a></li>
       <li><span>Site</span><a href="https://tiagotils.com.br">tiagotils.com.br</a></li>
       <li><span>Atendimento</span>São Luís, São José de Ribamar, Paço do Lumiar e Raposa · vídeo para todo o Brasil</li>
