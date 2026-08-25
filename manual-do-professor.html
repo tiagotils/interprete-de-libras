@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Manual do Professor | História do Maranhão em Libras</title>
+<meta name="description" content="Manual para professores dos anos finais do Ensino Fundamental: como aplicar o material História do Maranhão em Libras em sala de aula, com as etapas de pré-leitura, leitura e pós-leitura.">
+<meta name="author" content="Tiago Ferreira Veras">
+<link rel="canonical" href="https://tiagotils.com.br/manual-do-professor.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="180x180" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Manual do Professor — História do Maranhão em Libras">
+<meta property="og:description" content="Como aplicar o material bilíngue em sala de aula: pré-leitura, leitura e pós-leitura com estudantes surdos.">
+<meta property="og:url" content="https://tiagotils.com.br/manual-do-professor.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cobalto:#12365B; --azulejo:#2F6DA8; --caiacao:#F0F2EF; --ocre:#C0803A; --tinta:#15181D;
+  --nevoa:rgba(18,54,91,.14);
+  --sol:#F7C948; --sol-claro:#FDF3D0; --sol-fundo:#FEFAEC;
+  --display:"Fraunces",Georgia,serif; --corpo:"Karla",system-ui,sans-serif; --util:"IBM Plex Mono",monospace;
+  --medida:min(940px,92vw);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--sol-fundo);color:var(--tinta);font-family:var(--corpo);font-size:clamp(17px,1.1vw,19px);line-height:1.72;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--cobalto)}
+:focus-visible{outline:3px solid var(--cobalto);outline-offset:3px}
+
+header.topo{position:sticky;top:0;z-index:50;background:rgba(254,250,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--nevoa)}
+.topo-int{width:var(--medida);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+.marca{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.marca img{height:28px;width:auto}
+.marca span{font-family:var(--util);font-size:.62rem;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;color:var(--azulejo);border-left:1px solid var(--nevoa);padding-left:.8rem}
+@media(max-width:520px){.marca span{display:none}}
+.voltar{font-size:.88rem;text-decoration:none;color:var(--cobalto);border-bottom:2px solid var(--sol);padding-bottom:2px;white-space:nowrap}
+
+.abertura{background:var(--sol)}
+.abertura-int{width:var(--medida);margin:0 auto;padding:clamp(2.6rem,6vw,4rem) 0}
+.selo-inst{font-family:var(--util);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#7A5A18;margin-bottom:1rem}
+.abertura h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5.2vw,3.3rem);line-height:1.06;letter-spacing:-.02em;color:#2A1F06;max-width:18ch}
+.abertura p{margin-top:1.1rem;max-width:56ch;color:#3D2E0B}
+
+.sumario{background:var(--sol-claro);border-bottom:1px solid rgba(122,90,24,.2)}
+.sumario-int{width:var(--medida);margin:0 auto;padding:1.5rem 0}
+.sumario p{font-family:var(--util);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#7A5A18;margin-bottom:.8rem}
+.sumario ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
+.sumario a{display:inline-block;padding:.4rem .95rem;background:#FFF;border:1px solid rgba(122,90,24,.25);border-radius:99px;font-size:.88rem;text-decoration:none;color:var(--cobalto)}
+.sumario a:hover{background:var(--sol)}
+
+section.bloco{width:var(--medida);margin:0 auto;padding:clamp(2.8rem,5.5vw,4rem) 0;border-bottom:1px solid rgba(122,90,24,.22)}
+.rotulo{font-family:var(--util);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--azulejo);margin-bottom:.7rem}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1.14;letter-spacing:-.02em;color:var(--cobalto);max-width:24ch}
+h3{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--cobalto);margin-bottom:.4rem}
+p+p,p+ul,p+ol,ul+p,ol+p{margin-top:1rem}
+.texto{max-width:68ch}
+ul.marcada,ol.marcada{margin-left:1.15rem}
+ul.marcada li,ol.marcada li{margin-top:.55rem}
+
+/* etapa */
+.etapa{background:#FFF;border:1px solid rgba(122,90,24,.3);border-left:5px solid var(--sol);padding:clamp(1.4rem,3vw,2rem);margin-top:1.6rem}
+.etapa .passo{font-family:var(--util);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ocre);margin-bottom:.35rem}
+.etapa h3{font-size:1.35rem;font-weight:400}
+.etapa .tempo{font-family:var(--util);font-size:.72rem;color:var(--azulejo);margin-top:.2rem}
+.etapa h4{font-size:.82rem;font-family:var(--util);letter-spacing:.12em;text-transform:uppercase;color:var(--azulejo);margin:1.4rem 0 .5rem}
+.perguntas{background:var(--sol-fundo);border:1px dashed rgba(122,90,24,.45);padding:1rem 1.2rem;margin-top:.6rem}
+.perguntas li{margin-top:.45rem;font-size:.95rem}
+.perguntas li:first-child{margin-top:0}
+
+/* tabela do roteiro */
+.tabela{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:.92rem;background:#FFF}
+.tabela th,.tabela td{border:1px solid rgba(122,90,24,.3);padding:.7rem .85rem;text-align:left;vertical-align:top}
+.tabela th{background:var(--sol-claro);font-family:var(--util);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#5B451A;font-weight:500}
+.tabela td:first-child{font-weight:700;width:34%;color:var(--cobalto)}
+
+/* observação */
+.observa{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.8rem}
+.observa div{background:#FFF;border:1px solid rgba(122,90,24,.28);padding:1.1rem 1.2rem}
+.observa b{display:block;font-family:var(--util);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ocre);margin-bottom:.4rem;font-weight:500}
+.observa p{font-size:.92rem;margin:0}
+
+/* atenção */
+.atencao{background:#FFF;border-left:5px solid var(--cobalto);padding:1.2rem 1.4rem;margin-top:1.3rem}
+.atencao b{color:var(--cobalto)}
+
+/* glosa */
+.glosa{font-family:var(--util);font-size:.84rem;line-height:1.5;background:var(--sol-claro);padding:.8rem 1rem;margin-top:.7rem;border-left:3px solid var(--ocre)}
+
+.btn{display:inline-block;padding:.85rem 1.6rem;border-radius:2px;font-weight:700;font-size:.95rem;text-decoration:none;background:var(--cobalto);color:var(--caiacao);transition:background .2s}
+.btn:hover{background:#1B4C7D}
+.baixar{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.8rem}
+.baixar a{display:block;background:#FFF;border:1px solid rgba(122,90,24,.3);padding:1.2rem;text-decoration:none;transition:background .2s}
+.baixar a:hover{background:var(--sol-claro)}
+.baixar strong{display:block;color:var(--cobalto);font-family:var(--display);font-size:1.05rem;margin-bottom:.25rem}
+.baixar span{font-size:.86rem;color:#4A4034}
+
+.creditos{background:var(--cobalto);color:var(--caiacao);padding:clamp(2.4rem,5vw,3.4rem) 4vw}
+.creditos-int{width:var(--medida);margin:0 auto}
+.creditos h2{color:var(--caiacao);font-size:1.5rem}
+.creditos p{max-width:62ch;margin-top:1rem;color:#D5DEE8;font-size:.93rem}
+.creditos a{color:#F7C948}
+.selo{width:140px;margin-bottom:1.5rem;opacity:.9}
+footer{width:var(--medida);margin:0 auto;padding:2rem 0;font-size:.8rem;color:#7A6A50;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-int">
+    <a class="marca" href="index.html" aria-label="Tiago Veras — início">
+      <img src="logo-tiago-tils.png" width="760" height="448" alt="Tiago TILS — Tiago Veras, tradutor e intérprete de Libras">
+      <span>Intérprete de Libras<br>São Luís · MA</span>
+    </a>
+    <a class="voltar" href="historia-do-maranhao-em-libras.html">← Voltar ao material</a>
+  </div>
+</header>
+
+<main>
+
+<section class="abertura">
+  <div class="abertura-int">
+    <p class="selo-inst">História do Maranhão em Libras · PROFEI / UEMA</p>
+    <h1>Manual do Professor</h1>
+    <p>Como usar este material com estudantes surdos dos anos finais do Ensino Fundamental. O roteiro apresentado aqui foi testado em duas oficinas de quatro horas, em escolas da rede municipal de Paço do Lumiar, e organiza a aula em três momentos: pré-leitura, leitura e pós-leitura com consolidação.</p>
+  </div>
+</section>
+
+<nav class="sumario" aria-label="Sumário do manual">
+  <div class="sumario-int">
+    <p>Neste manual</p>
+    <ul>
+      <li><a href="#comecar">Antes de começar</a></li>
+      <li><a href="#etapas">As três etapas</a></li>
+      <li><a href="#roteiro">Roteiro de planejamento</a></li>
+      <li><a href="#observar">Como observar a aprendizagem</a></li>
+      <li><a href="#cuidados">Cuidados importantes</a></li>
+      <li><a href="#materiais">Materiais</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="bloco" id="comecar">
+  <p class="rotulo">Antes de começar</p>
+  <h2>O que preparar</h2>
+  <div class="texto">
+    <p>Este material foi pensado para turmas com estudantes surdos, mas funciona com a turma inteira. O vídeo em Libras é o texto principal da aula — não é um apoio nem uma tradução opcional. Tudo se organiza em volta dele.</p>
+
+    <h3 style="margin-top:1.8rem">Equipamentos</h3>
+    <ul class="marcada">
+      <li>Computador e projetor, ou televisão com acesso à internet.</li>
+      <li>Caixa de som, se houver estudantes ouvintes na turma.</li>
+      <li>A atividade impressa do flipbook, uma cópia por estudante.</li>
+      <li>Tesoura, cola ou grampeador, e lápis de cor.</li>
+    </ul>
+
+    <h3 style="margin-top:1.8rem">Quem participa</h3>
+    <p>Sempre que possível, combine a aula com o tradutor e intérprete de Libras da escola e com o professor de Libras, se houver. Nas oficinas em que o material foi testado, a presença desses profissionais foi decisiva: eles retomaram informações, esclareceram sinais e ajudaram os estudantes a formular respostas. O vídeo sozinho não dá conta.</p>
+
+    <h3 style="margin-top:1.8rem">Tempo</h3>
+    <p>A aplicação completa de um capítulo leva cerca de quatro horas, o que costuma equivaler a um turno ou a duas aulas duplas. Se o seu tempo for menor, divida: pré-leitura e leitura num dia, pós-leitura e consolidação no outro.</p>
+
+    <h3 style="margin-top:1.8rem">Antes da aula</h3>
+    <p>Assista ao vídeo do capítulo inteiro com antecedência e anote os conceitos centrais. Verifique também se os estudantes surdos da turma já conhecem os sinais desses conceitos — se não conhecerem, o glossário em Libras deve ser exibido antes do capítulo, e não depois.</p>
+  </div>
+</section>
+
+<section class="bloco" id="etapas">
+  <p class="rotulo">As três etapas</p>
+  <h2>Pré-leitura, leitura e consolidação</h2>
+  <div class="texto">
+    <p>A sequência abaixo segue a proposta de Ramos (2004), apresentada por Couto e Cruz (2023), adaptada aqui do ensino de línguas para o ensino de História. O exemplo usa o Capítulo 01, sobre Upaon-Açu e os sambaquis, mas a estrutura vale para os três capítulos.</p>
+  </div>
+
+  <article class="etapa">
+    <p class="passo">Etapa 1</p>
+    <h3>Pré-leitura — ativar o que a turma já sabe</h3>
+    <p class="tempo">Cerca de 45 minutos</p>
+
+    <h4>Objetivo</h4>
+    <p>Despertar o conhecimento que os estudantes já têm e apresentar o tema antes de qualquer explicação formal. Nesta etapa você pergunta muito e explica pouco.</p>
+
+    <h4>O que fazer</h4>
+    <ul class="marcada">
+      <li>Apresente os objetivos do encontro. Diga o que vão ver e aprender. Isso ajuda o estudante a se situar no percurso da aula.</li>
+      <li>Projete uma imagem do objeto de estudo — no Capítulo 01, a foto de um sambaqui — sem dizer o nome ainda.</li>
+      <li>Faça as perguntas norteadoras e deixe os estudantes responderem em Libras, sem pressa.</li>
+      <li>Comece pelo mapa-múndi e vá fechando: continente, Brasil, Maranhão, ilha de Upaon-Açu, município da escola. Essa passagem do amplo para o próximo funcionou muito bem nas oficinas.</li>
+    </ul>
+
+    <h4>Perguntas para fazer</h4>
+    <ul class="perguntas">
+      <li>O que vocês veem nesta imagem?</li>
+      <li>Alguém sabe o nome disso?</li>
+      <li>Existe sinal em Libras para isso?</li>
+      <li>Onde vocês acham que podemos encontrar isso?</li>
+    </ul>
+  </article>
+
+  <article class="etapa">
+    <p class="passo">Etapa 2</p>
+    <h3>Leitura — assistir ao vídeo em Libras</h3>
+    <p class="tempo">Cerca de 60 minutos</p>
+
+    <h4>Objetivo</h4>
+    <p>Ler o texto — que aqui está em Libras, no vídeo. Ler não é só exibir: é acompanhar, pausar, retomar e conversar sobre o que apareceu.</p>
+
+    <h4>O que fazer</h4>
+    <ul class="marcada">
+      <li>Exiba o vídeo do capítulo inteiro, uma primeira vez, sem interrupção.</li>
+      <li>Faça as perguntas de compreensão, projetadas na tela, uma de cada vez.</li>
+      <li>Exiba o vídeo uma segunda vez, agora pausando nos pontos que geraram dúvida. Reassistir é parte do método, não sinal de fracasso.</li>
+      <li>Se algum conceito não estiver claro, exiba o glossário em Libras daquele capítulo.</li>
+      <li>Anote os sinais que os estudantes ainda não dominam. Essa lista orienta as próximas aulas.</li>
+    </ul>
+
+    <h4>Perguntas para fazer</h4>
+    <ul class="perguntas">
+      <li>Qual é o tema do vídeo?</li>
+      <li>O que vocês já sabiam e o que era novo?</li>
+      <li>Algum sinal ou alguma palavra chamou a atenção de vocês?</li>
+      <li>O que vocês aprenderam sobre esse assunto?</li>
+    </ul>
+  </article>
+
+  <article class="etapa">
+    <p class="passo">Etapa 3</p>
+    <h3>Pós-leitura e consolidação — organizar e produzir</h3>
+    <p class="tempo">Cerca de 90 minutos</p>
+
+    <h4>Objetivo</h4>
+    <p>Sistematizar o que foi visto e dar ao estudante a chance de expressar o que entendeu, do jeito dele.</p>
+
+    <h4>O que fazer</h4>
+    <ul class="marcada">
+      <li>Retome o conteúdo com a linha do tempo do material. Nas oficinas, esse recurso foi o que mais ajudou os estudantes a organizar a sequência dos acontecimentos — tanto que foi incorporado ao vídeo depois.</li>
+      <li>Apoie a retomada com imagens e com as palavras em português correspondentes aos sinais trabalhados. Ver o sinal e a palavra juntos ajuda a fixar o conceito.</li>
+      <li>Peça que cada estudante conte, em Libras, o que compreendeu. Depois, se for adequado ao perfil da turma, peça o registro em português escrito.</li>
+      <li>Encerre com a montagem do flipbook: recortar, ordenar as quatro páginas, colar ou grampear, e pintar.</li>
+      <li>Peça que mostrem o livro pronto aos colegas e digam o que aprenderam.</li>
+    </ul>
+
+    <div class="atencao">
+      <p><b>O flipbook não é prova.</b> Trate-o como oportunidade de observar como cada estudante seleciona, organiza e representa a informação histórica. Ninguém precisa acertar tudo.</p>
+    </div>
+  </article>
+</section>
+
+<section class="bloco" id="roteiro">
+  <p class="rotulo">Planejamento</p>
+  <h2>Roteiro para montar a sua aula</h2>
+  <div class="texto">
+    <p>Use esta tabela como modelo de plano de aula. Ela foi o instrumento usado no planejamento das oficinas e pode ser copiada para o seu caderno ou para o formato exigido pela sua escola.</p>
+  </div>
+
+  <table class="tabela">
+    <caption class="rotulo" style="text-align:left;margin-bottom:.5rem;caption-side:top">Modelo de roteiro (Ramos, 2004; Couto e Cruz, 2023)</caption>
+    <thead>
+      <tr><th scope="col">Campo</th><th scope="col">O que preencher</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tema</td><td>Assunto do capítulo escolhido.</td></tr>
+      <tr><td>Área do conhecimento</td><td>Ciências Humanas.</td></tr>
+      <tr><td>Componente curricular</td><td>História.</td></tr>
+      <tr><td>Público-alvo</td><td>Turma e ano; indique quantos estudantes surdos participam e qual o perfil linguístico deles.</td></tr>
+      <tr><td>Duração</td><td>Tempo total e como será dividido entre as três etapas.</td></tr>
+      <tr><td>Objetivo geral</td><td>O que a turma deve compreender ao final.</td></tr>
+      <tr><td>Objetivos específicos</td><td>Conceitos, relações e habilidades que serão trabalhados.</td></tr>
+      <tr><td>Conteúdos</td><td>Tópicos abordados no capítulo.</td></tr>
+      <tr><td>Habilidades da BNCC</td><td>Códigos das habilidades correspondentes ao ano da turma.</td></tr>
+      <tr><td>Recursos didáticos</td><td>Vídeo em Libras, projetor, slides, mapas, linha do tempo, atividade impressa.</td></tr>
+      <tr><td>Metodologia</td><td>Como a aula se organiza; quem faz a mediação em Libras.</td></tr>
+      <tr><td>Pré-leitura</td><td>Imagem escolhida e perguntas norteadoras.</td></tr>
+      <tr><td>Leitura</td><td>Vídeo exibido e perguntas de compreensão.</td></tr>
+      <tr><td>Pós-leitura e consolidação</td><td>Retomada, linha do tempo e atividade de produção.</td></tr>
+      <tr><td>Avaliação</td><td>O que será observado e como o estudante poderá se expressar.</td></tr>
+      <tr><td>Referências</td><td>Fontes usadas no planejamento.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="bloco" id="observar">
+  <p class="rotulo">Avaliação</p>
+  <h2>Como observar a aprendizagem</h2>
+  <div class="texto">
+    <p>Em vez de nota ou acerto, observe indícios. São seis sinais de que o conteúdo está sendo construído — e o estudante não precisa apresentar todos.</p>
+  </div>
+
+  <div class="observa">
+    <div><b>Conceito</b><p>Reconhece ou explica o conceito trabalhado, com o sinal-termo ou com uma descrição própria.</p></div>
+    <div><b>Espaço</b><p>Relaciona o que aprendeu a lugares: a praia, a ilha, o município, o entorno da escola.</p></div>
+    <div><b>Tempo</b><p>Relaciona o assunto a períodos, ou percebe a continuidade entre passado e presente.</p></div>
+    <div><b>Uso do vídeo</b><p>Traz nas respostas informações que apareceram no vídeo em Libras.</p></div>
+    <div><b>Imagem e conceito</b><p>Liga a imagem projetada ao conceito discutido.</p></div>
+    <div><b>Produção</b><p>Produz um registro — sinalizado, escrito ou visual — coerente com o tema.</p></div>
+  </div>
+
+  <div class="texto" style="margin-top:2rem">
+    <h3>Exemplos reais de respostas</h3>
+    <p>Nas oficinas, pediu-se que os estudantes contassem em Libras o que tinham compreendido sobre os sambaquis. As respostas, transcritas em glosas, mostram três caminhos bem diferentes — e todos válidos:</p>
+
+    <p class="glosa">MONTE [SAMBAQUI] PRESERVAR HISTÓRIA TRAJETÓRIA [DO PASSADO ATÉ OS DIAS DE HOJE] PRESERVAR ÁREA VALORIZAR</p>
+    <p class="glosa">PRESERVAR SÍTIOS MONTES SAMBAQUIS GRANDES MONTES CONCHAS OSSOS OUTROS MATERIAIS PRAIA</p>
+    <p class="glosa">SAMBAQUIS REPRESENTAR HISTÓRIA CULTURA POVO UM. PROTEGER PRECISAR RESPEITAR LEI NÃO CONSTRUIR [AO] REDOR POPULAÇÃO CONSCIENTIZAR</p>
+
+    <p>Repare: o primeiro estudante nem chegou a usar o sinal-termo, ficou na descrição "monte" — e mesmo assim foi o único a relacionar passado e presente. O segundo descreveu do que o sambaqui é feito. A terceira falou de preservação, lei e conscientização.</p>
+
+    <div class="atencao">
+      <p><b>Saber o sinal e entender o conceito são coisas diferentes.</b> Um estudante pode compreender muito bem sem ter incorporado ainda o sinal técnico. Avaliar só pelo vocabulário faz o professor perder o que está acontecendo de mais importante.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloco" id="cuidados">
+  <p class="rotulo">Cuidados</p>
+  <h2>O que aprendemos aplicando</h2>
+  <div class="texto">
+    <p><strong>Participação baixa não significa não compreensão.</strong> Nas oficinas, um estudante participou pouco na primeira metade do encontro e mudou completamente depois do intervalo, por razões que não tinham a ver com o conteúdo. Antes de concluir que a aula não funcionou, converse com a coordenação e observe em outro momento.</p>
+
+    <p><strong>O material não ensina sozinho.</strong> A compreensão observada não veio só do vídeo: veio da soma entre o vídeo, as imagens, as perguntas, a retomada e a mediação dos profissionais de Libras. Se você exibir o vídeo e passar para outra coisa, o efeito se perde.</p>
+
+    <p><strong>Aproxime o conteúdo do território.</strong> Uma das estudantes mudou a qualidade da resposta quando soube que existem sítios arqueológicos na região da própria escola. O assunto deixou de ser distante e virou parte do lugar onde ela vive. Procure essas conexões locais antes da aula.</p>
+
+    <p><strong>Perfis linguísticos são diferentes dentro da mesma turma.</strong> Estudantes surdos do mesmo ano podem ter repertórios em Libras muito distintos. Alguns se apoiam em leitura labial, outros em imagens, outros pedem para rever o vídeo. Deixe todos esses caminhos disponíveis.</p>
+
+    <p><strong>Deixe o estudante responder em Libras primeiro.</strong> Exigir o português escrito de saída limita o que ele consegue expressar. Primeiro a compreensão em Libras; o registro escrito vem depois, se fizer sentido para o perfil da turma.</p>
+  </div>
+</section>
+
+<section class="bloco" id="materiais">
+  <p class="rotulo">Materiais</p>
+  <h2>Tudo o que você precisa</h2>
+
+  <div class="baixar">
+    <a href="historia-do-maranhao-em-libras.html"><strong>Vídeos em Libras</strong><span>Os três capítulos, os glossários e a linha do tempo</span></a>
+    <a href="https://drive.google.com/file/d/17ufmnCcm0Kg45Q2NRMG-EGyuxvB2BRhY/view" target="_blank" rel="noopener"><strong>Livro em PDF ↗</strong><span>O material paradidático completo</span></a>
+    <a href="https://drive.google.com/file/d/1JqeDhUdiWzKyiac4zqXgcPJmCJOwps6U/view" target="_blank" rel="noopener"><strong>Atividade — Capítulo 01 ↗</strong><span>Flipbook da História Antiga do Maranhão</span></a>
+    <a href="https://drive.google.com/file/d/1KSmPVUi1ASyAHVJu9d13ANDW94oK8isN/view" target="_blank" rel="noopener"><strong>Atividade — Capítulo 02 ↗</strong><span>Flipbook da Herança Africana</span></a>
+    <a href="https://drive.google.com/file/d/1Uvx3pYXUa4apGvGAQNOCzXzpGVmbLU1S/view" target="_blank" rel="noopener"><strong>Atividade — Capítulo 03 ↗</strong><span>Flipbook da Herança Portuguesa</span></a>
+  </div>
+
+  <div class="texto" style="margin-top:2.4rem">
+    <h3>De onde vem esta proposta</h3>
+    <p>A organização em pré-leitura, leitura e pós-leitura vem de Ramos (2004), na forma apresentada por Couto e Cruz (2023). As estratégias visuais — roteiro imagético, resumo bilíngue e avaliação acessível — seguem Santos (2018). A aplicação e os resultados descritos aqui fazem parte da dissertação <em>História do Maranhão e Libras: uma perspectiva de acessibilidade linguística através de estratégias tradutórias em língua de sinais brasileira</em>, defendida em 2026 no PROFEI da Universidade Estadual do Maranhão.</p>
+    <p style="margin-top:1.4rem"><a class="btn" href="historia-do-maranhao-em-libras.html">Ir para o material</a></p>
+  </div>
+</section>
+
+</main>
+
+<section class="creditos">
+  <div class="creditos-int">
+    <img class="selo" src="logo-tiago-tils-claro.png" width="760" height="448" loading="lazy" alt="Tiago TILS">
+    <h2>Dúvidas e formação</h2>
+    <p>Se a sua escola quiser apoio para aplicar o material, ou uma formação sobre acessibilidade linguística no ensino de História, entre em contato pelo <a href="https://wa.me/5598988253316">WhatsApp (98) 98825-3316</a> ou pelo <a href="https://instagram.com/tiagotils">Instagram @tiagotils</a>.</p>
+    <p>VERAS, Tiago. <em>História do Maranhão em Libras</em> — Manual do Professor. Produto do Mestrado Profissional em Educação Inclusiva em Rede (PROFEI), Universidade Estadual do Maranhão, 2026.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Tiago Ferreira Veras · Todos os direitos reservados — Maranhão</p>
+  <p><a href="index.html" style="color:inherit">tiagotils.com.br</a></p>
+</footer>
+
+</body>
+</html>
