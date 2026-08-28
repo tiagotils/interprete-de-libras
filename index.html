@@ -250,6 +250,15 @@ h3{font-family:var(--display);font-weight:600;font-size:1.18rem;color:var(--coba
 .obra+.grupo{margin-top:2.8rem}
 .grupo:first-child{margin-top:0;padding-top:0;border-top:none}
 
+/* perguntas frequentes */
+.faq{margin-top:2.2rem;border-top:1px solid var(--nevoa)}
+.faq details{border-bottom:1px solid var(--nevoa)}
+.faq summary{cursor:pointer;list-style:none;padding:1.1rem 2rem 1.1rem 0;position:relative;font-family:var(--display);font-size:1.08rem;color:var(--cobalto);font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.3rem;top:50%;transform:translateY(-50%);color:var(--ocre);font-family:var(--corpo);font-weight:400;font-size:1.4rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 1.3rem;max-width:70ch;font-size:.96rem;color:#3C4650}
+
 /* contato */
 #contato{background:var(--cobalto);color:var(--caiacao);border:none;width:100%;max-width:none;padding-left:4vw;padding-right:4vw;position:relative;overflow:hidden}
 #contato .azulejo{position:absolute;inset:0;opacity:.13;filter:invert(1)}
@@ -290,6 +299,78 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
 }
 @media(prefers-reduced-motion:reduce){.zap:hover,.zap:focus-visible{transform:none}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto custa contratar um intérprete de Libras em São Luís?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O valor depende de quatro fatores: a duração do evento, o número de intérpretes necessários, o deslocamento até o local e a complexidade do conteúdo. Eventos técnicos ou acadêmicos exigem mais horas de preparação terminológica. O orçamento é enviado em até 24 horas depois que você informa data, local, duração e tema."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quantos intérpretes o meu evento precisa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para atividades de até uma hora, um intérprete costuma ser suficiente. Acima disso, a prática profissional recomenda dupla em revezamento a cada 20 ou 30 minutos, porque a interpretação simultânea gera fadiga cognitiva e a qualidade cai de forma perceptível depois desse tempo. Eventos de dia inteiro sempre exigem dupla."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Com quanta antecedência preciso contratar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O ideal é de sete a quinze dias, prazo que permite a preparação terminológica e a formação de dupla, quando necessária. Demandas urgentes podem ser atendidas conforme a disponibilidade da agenda — vale consultar mesmo em cima da hora."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual é a diferença entre tradutor e intérprete de Libras?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O intérprete atua ao vivo, em tempo real, entre a Libras e o português falado. O tradutor trabalha com material gravado ou escrito, com tempo para pesquisar e revisar — é o caso da janela de Libras em vídeo. Na prática, o mesmo profissional costuma exercer as duas funções, mas as competências e o preparo exigidos são diferentes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Meu evento é obrigado por lei a ter intérprete de Libras?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Lei nº 10.436/2002 reconhece a Libras como meio legal de comunicação, e o Decreto nº 5.626/2005 estabelece a obrigação de garantir atendimento e acessibilidade às pessoas surdas em órgãos públicos e empresas concessionárias de serviços públicos. A Lei Brasileira de Inclusão (nº 13.146/2015) amplia esse dever a eventos abertos ao público. Cada caso tem particularidades, e vale confirmar a exigência específica do seu edital ou contrato."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Você atende fora de São Luís?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Presencialmente, atendo São Luís, São José de Ribamar, Paço do Lumiar e Raposa. Para outros municípios do Maranhão, o atendimento é possível mediante acerto de deslocamento. Traduções gravadas em vídeo e eventos on-line são atendidos em qualquer lugar do Brasil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que preciso enviar antes do evento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Roteiro ou programação, slides das apresentações, lista de nomes próprios e siglas, e qualquer material técnico que será citado. Esse envio prévio permite pesquisar os sinais adequados e, quando o conteúdo exige, consultar um consultor surdo. É o que separa uma interpretação correta de uma interpretação apenas fluente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como funciona a janela de Libras em vídeo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A gravação é feita em estúdio com fundo verde, e a imagem do intérprete é inserida sobre o vídeo original na etapa de edição. O tamanho e a posição da janela seguem os parâmetros da norma técnica ABNT NBR 15290. É o formato usado em videoaulas, campanhas institucionais e materiais didáticos."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -304,6 +385,7 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
       <a href="#servicos">Serviços</a>
       <a href="#atuacao">Atuação</a>
       <a href="#publicacoes">Publicações</a>
+      <a href="#perguntas">Dúvidas</a>
       <a href="historia-do-maranhao-em-libras.html">Material em Libras</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -353,7 +435,7 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
     <div class="texto">
       <p>Sou <strong>intérprete de Libras em São Luís, no Maranhão</strong>, e atuo com tradução e interpretação entre a Língua Brasileira de Sinais e o português em contextos educacionais, acadêmicos, institucionais e culturais.</p>
       <p>Atuo na área desde 2010. Sou graduado em Letras Libras e mestre em Educação Inclusiva pelo Mestrado Profissional em Educação Inclusiva em Rede (Profei) da Universidade Estadual do Maranhão, com dissertação defendida em 2026 sobre acessibilidade linguística e estratégias tradutórias em língua de sinais. A pesquisa gerou um material paradidático bilíngue de História do Maranhão, com videotextos em Libras aplicados em escolas da rede municipal de Paço do Lumiar.</p>
-      <p class="destaque">Interpretar é mobilizar competências tradutórias — e elas não se sustentam sem convivência com a comunidade surda.</p>
+      <p class="destaque">Interpretar é mobilizar competência tradutória — e ela não se sustenta sem convivência com a comunidade surda.</p>
       <p>Essa competência reúne o domínio das duas línguas, o conhecimento sobre o assunto, o uso de instrumentos de pesquisa e, acima de tudo, a capacidade estratégica de decidir sob pressão de tempo.</p>
       <p>Na prática, isso significa estudos lexicais antes do evento, conhecer as variações regionais da Libras e, principalmente, trabalhar com consultor surdo, que confere maior controle de qualidade à nossa atuação.</p>
     </div>
@@ -499,23 +581,69 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
         <h3>Inovação digital e ética da acessibilidade</h3>
         <p>Como tecnologias emergentes — IA, cidades inteligentes e internet das coisas — podem promover ou excluir pessoas com deficiência. ISBN 978-65-84149-14-4.</p>
       </div>
-      <p class="grupo">Artigos</p>
+      <p class="grupo">Artigos e capítulos</p>
       <div class="obra">
-        <p class="meta">Seven Editora, 2026</p>
+        <p class="meta">Capítulo · Arco Editores, maio de 2026</p>
+        <h3><a href="https://doi.org/10.48209/978-65-5417-720-2">Curadoria de glossários de Libras na área de História do Brasil para alunos surdos do Ensino Médio</a></h3>
+        <p>Em <em>Libras, educação de surdos e práticas pedagógicas inclusivas</em>. DOI 10.48209/978-65-5417-720-2.</p>
+      </div>
+      <div class="obra">
+        <p class="meta">Artigo · Seven Editora, 2026</p>
         <h3>Os desafios da tradução de temas sensíveis</h3>
         <p>Estratégias tradutórias diante de experiências extremas e os limites da equivalência entre línguas e culturas. DOI 10.56238/sevened2026.030-023.</p>
       </div>
       <div class="obra">
-        <p class="meta">Anais da Jornada Nacional de Extensão · UEMA, 2025</p>
+        <p class="meta">Trabalho em anais · UEMA, 2025</p>
         <h3><a href="https://www.even3.com.br/anais/jonaexuema/1127010-quando-o-sinal-e-conceito--estrategias-de-terminologia-em-lingua-de-sinais-brasileira-para-o-ensino-de-historia/">Quando o sinal é conceito: estratégias de terminologia em língua de sinais brasileira para o ensino de História</a></h3>
         <p>Com Simone Pereira Pinheiro e Jakson dos Santos Ribeiro. São Luís, MA · ISBN 978-65-272-1514-1.</p>
       </div>
       <div class="obra">
-        <p class="meta">Anais da Jornada Nacional de Extensão · UEMA, 2025</p>
+        <p class="meta">Trabalho em anais · UEMA, 2025</p>
         <h3><a href="https://www.even3.com.br/anais/jonaexuema/1115889-entre-silencios-e-sinais--o-ensino-de-historia-para-surdos-no-maranhao-sob-a-perspectiva-do-letramento-historico/">Entre silêncios e sinais: o ensino de História para surdos no Maranhão sob a perspectiva do letramento histórico</a></h3>
         <p>Com Simone Pereira Pinheiro e Jakson dos Santos Ribeiro. São Luís, MA · ISBN 978-65-272-1514-1.</p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section class="bloco rev" id="perguntas">
+  <p class="rotulo">Perguntas frequentes</p>
+  <h2>Como contratar um intérprete de Libras em São Luís</h2>
+
+  <div class="faq">
+    <details>
+      <summary>Quanto custa contratar um intérprete de Libras em São Luís?</summary>
+      <p>O valor depende de quatro fatores: a duração do evento, o número de intérpretes necessários, o deslocamento até o local e a complexidade do conteúdo. Eventos técnicos ou acadêmicos exigem mais horas de preparação terminológica. O orçamento é enviado em até 24 horas depois que você informa data, local, duração e tema.</p>
+    </details>
+    <details>
+      <summary>Quantos intérpretes o meu evento precisa?</summary>
+      <p>Para atividades de até uma hora, um intérprete costuma ser suficiente. Acima disso, a prática profissional recomenda dupla em revezamento a cada 20 ou 30 minutos, porque a interpretação simultânea gera fadiga cognitiva e a qualidade cai de forma perceptível depois desse tempo. Eventos de dia inteiro sempre exigem dupla.</p>
+    </details>
+    <details>
+      <summary>Com quanta antecedência preciso contratar?</summary>
+      <p>O ideal é de sete a quinze dias, prazo que permite a preparação terminológica e a formação de dupla, quando necessária. Demandas urgentes podem ser atendidas conforme a disponibilidade da agenda — vale consultar mesmo em cima da hora.</p>
+    </details>
+    <details>
+      <summary>Qual é a diferença entre tradutor e intérprete de Libras?</summary>
+      <p>O intérprete atua ao vivo, em tempo real, entre a Libras e o português falado. O tradutor trabalha com material gravado ou escrito, com tempo para pesquisar e revisar — é o caso da janela de Libras em vídeo. Na prática, o mesmo profissional costuma exercer as duas funções, mas as competências e o preparo exigidos são diferentes.</p>
+    </details>
+    <details>
+      <summary>Meu evento é obrigado por lei a ter intérprete de Libras?</summary>
+      <p>A Lei nº 10.436/2002 reconhece a Libras como meio legal de comunicação, e o Decreto nº 5.626/2005 estabelece a obrigação de garantir atendimento e acessibilidade às pessoas surdas em órgãos públicos e empresas concessionárias de serviços públicos. A Lei Brasileira de Inclusão (nº 13.146/2015) amplia esse dever a eventos abertos ao público. Cada caso tem particularidades, e vale confirmar a exigência específica do seu edital ou contrato.</p>
+    </details>
+    <details>
+      <summary>Você atende fora de São Luís?</summary>
+      <p>Presencialmente, atendo São Luís, São José de Ribamar, Paço do Lumiar e Raposa. Para outros municípios do Maranhão, o atendimento é possível mediante acerto de deslocamento. Traduções gravadas em vídeo e eventos on-line são atendidos em qualquer lugar do Brasil.</p>
+    </details>
+    <details>
+      <summary>O que preciso enviar antes do evento?</summary>
+      <p>Roteiro ou programação, slides das apresentações, lista de nomes próprios e siglas, e qualquer material técnico que será citado. Esse envio prévio permite pesquisar os sinais adequados e, quando o conteúdo exige, consultar um consultor surdo. É o que separa uma interpretação correta de uma interpretação apenas fluente.</p>
+    </details>
+    <details>
+      <summary>Como funciona a janela de Libras em vídeo?</summary>
+      <p>A gravação é feita em estúdio com fundo verde, e a imagem do intérprete é inserida sobre o vídeo original na etapa de edição. O tamanho e a posição da janela seguem os parâmetros da norma técnica ABNT NBR 15290. É o formato usado em videoaulas, campanhas institucionais e materiais didáticos.</p>
+    </details>
   </div>
 </section>
 
