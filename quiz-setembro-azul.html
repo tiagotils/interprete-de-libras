@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Quiz do Setembro Azul | Jogos para ensinar Libras</title>
+<meta name="description" content="Quiz gratuito sobre o Setembro Azul e o Setembro Surdo: as datas, a Lei de Libras, a história da educação de surdos e os parâmetros da língua. 15 perguntas com explicação, para turmas dos anos finais, ensino médio e cursos de Libras.">
+<meta name="author" content="Tiago Ferreira Veras">
+<link rel="canonical" href="https://tiagotils.com.br/quiz-setembro-azul.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="180x180" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Quiz do Setembro Azul">
+<meta property="og:description" content="15 perguntas sobre o Setembro Surdo, a Libras e a história da educação de surdos, com explicação em cada resposta.">
+<meta property="og:url" content="https://tiagotils.com.br/quiz-setembro-azul.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cobalto:#12365B;
+  --azul:#1E6FB8;
+  --azul-claro:#E7F0F9;
+  --caiacao:#F0F2EF;
+  --ocre:#C0803A;
+  --sol:#F7C948;
+  --verde:#1B7A6B;
+  --verde-claro:#E4F2EF;
+  --vermelho:#B4442C;
+  --vermelho-claro:#FBEDEA;
+  --tinta:#15181D;
+  --nevoa:rgba(18,54,91,.14);
+
+  --display:"Fraunces",Georgia,serif;
+  --corpo:"Karla",system-ui,-apple-system,sans-serif;
+  --util:"IBM Plex Mono",ui-monospace,monospace;
+
+  --medida:min(720px,92vw);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--caiacao);
+  color:var(--tinta);
+  font-family:var(--corpo);
+  font-size:clamp(16px,1.05vw,18px);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--cobalto)}
+button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;background:none}
+:focus-visible{outline:3px solid var(--ocre);outline-offset:3px}
+
+/* ---------- topo ---------- */
+header.topo{
+  background:rgba(240,242,239,.94);
+  border-bottom:1px solid var(--nevoa);
+  flex:0 0 auto;
+}
+.topo-int{width:var(--medida);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0}
+.marca{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.marca img{height:26px;width:auto}
+.marca span{font-family:var(--util);font-size:.6rem;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;color:var(--azul);border-left:1px solid var(--nevoa);padding-left:.8rem}
+@media(max-width:520px){.marca span{display:none}}
+.voltar{font-size:.85rem;text-decoration:none;color:var(--cobalto);border-bottom:2px solid var(--sol);padding-bottom:2px;white-space:nowrap}
+
+main{flex:1 0 auto;width:var(--medida);margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem) 0 3rem}
+
+/* ---------- barra de progresso ---------- */
+.progresso{margin-bottom:1.6rem}
+.progresso-topo{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--util);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);margin-bottom:.5rem}
+.barra{height:8px;background:var(--nevoa);border-radius:99px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--azul);border-radius:99px;width:0;transition:width .4s ease}
+
+/* ---------- cartões ---------- */
+.cartao{
+  background:#FFFFFF;
+  border:1px solid var(--nevoa);
+  border-radius:6px;
+  padding:clamp(1.4rem,4vw,2.4rem);
+  box-shadow:0 4px 18px rgba(18,54,91,.07);
+}
+
+/* ---------- capa ---------- */
+.capa{text-align:center}
+.capa .selo{font-family:var(--util);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--azul);margin-bottom:1rem}
+.capa h1{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,6vw,3rem);line-height:1.08;color:var(--cobalto);letter-spacing:-.02em}
+.capa .sub{margin-top:1rem;color:#3C4650;max-width:48ch;margin-left:auto;margin-right:auto}
+
+.ficha{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:1px;background:var(--nevoa);border:1px solid var(--nevoa);
+  margin:1.8rem 0;text-align:left;
+}
+.ficha div{background:#FFF;padding:.85rem 1rem}
+.ficha b{display:block;font-family:var(--util);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azul);margin-bottom:.2rem;font-weight:500}
+.ficha span{font-size:.9rem}
+
+.instrucoes{text-align:left;background:var(--azul-claro);border-left:5px solid var(--azul);padding:1.1rem 1.3rem;border-radius:4px;margin-bottom:1.8rem}
+.instrucoes b{display:block;font-family:var(--util);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalto);margin-bottom:.5rem}
+.instrucoes ul{list-style:none;margin:0;padding:0}
+.instrucoes li{position:relative;padding-left:1.3rem;margin:.4rem 0;font-size:.94rem}
+.instrucoes li::before{content:"";position:absolute;left:.15rem;top:.62em;width:.45em;height:.45em;background:var(--azul);transform:rotate(45deg)}
+
+/* ---------- botões ---------- */
+.btn{
+  display:inline-block;padding:.95rem 2rem;border-radius:3px;
+  font-weight:700;font-size:1rem;text-decoration:none;text-align:center;
+  transition:background .2s,transform .15s;
+}
+.btn-1{background:var(--azul);color:#FFFFFF}
+.btn-1:hover:not(:disabled){background:#175C9B;transform:translateY(-2px)}
+.btn-2{background:transparent;color:var(--cobalto);border:1.5px solid var(--nevoa)}
+.btn-2:hover{background:var(--azul-claro)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+/* ---------- pergunta ---------- */
+.tema{font-family:var(--util);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ocre);margin-bottom:.7rem}
+.pergunta{font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,3.4vw,1.5rem);line-height:1.3;color:var(--cobalto);margin-bottom:1.5rem}
+
+.opcoes{display:grid;gap:.7rem;margin-bottom:1.3rem}
+.opcao{
+  display:flex;align-items:flex-start;gap:.9rem;
+  width:100%;text-align:left;
+  background:#FFF;border:1.5px solid var(--nevoa);border-radius:4px;
+  padding:.95rem 1.1rem;
+  font-size:.98rem;line-height:1.5;
+  transition:border-color .18s,background .18s,transform .12s;
+}
+.opcao:hover:not(:disabled){border-color:var(--azul);background:var(--azul-claro);transform:translateX(3px)}
+.opcao:disabled{cursor:default}
+.opcao .letra{
+  flex:0 0 auto;width:1.65rem;height:1.65rem;border-radius:50%;
+  background:var(--azul-claro);color:var(--cobalto);
+  font-family:var(--util);font-size:.78rem;font-weight:500;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .18s,color .18s;
+}
+.opcao.certa{border-color:var(--verde);background:var(--verde-claro)}
+.opcao.certa .letra{background:var(--verde);color:#FFF}
+.opcao.errada{border-color:var(--vermelho);background:var(--vermelho-claro)}
+.opcao.errada .letra{background:var(--vermelho);color:#FFF}
+.opcao .marca-resp{margin-left:auto;font-family:var(--util);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;flex:0 0 auto;padding-left:.6rem}
+.opcao.certa .marca-resp{color:#12594E}
+.opcao.errada .marca-resp{color:#8A2F1C}
+
+/* ---------- retorno ---------- */
+.retorno{border-radius:4px;padding:1.1rem 1.3rem;margin-bottom:1.3rem;border-left:5px solid}
+.retorno.acerto{background:var(--verde-claro);border-color:var(--verde)}
+.retorno.erro{background:var(--vermelho-claro);border-color:var(--vermelho)}
+.retorno b{display:block;font-family:var(--util);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.45rem}
+.retorno.acerto b{color:#12594E}
+.retorno.erro b{color:#8A2F1C}
+.retorno p{margin:0;font-size:.95rem}
+
+.rodape-pergunta{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.placar{font-family:var(--util);font-size:.72rem;letter-spacing:.1em;color:#5A6570}
+
+/* ---------- resultado ---------- */
+.resultado{text-align:center}
+.nota{
+  font-family:var(--display);font-size:clamp(3rem,12vw,5rem);line-height:1;
+  color:var(--azul);font-weight:600;
+}
+.nota small{font-size:.35em;color:#5A6570;font-weight:400}
+.resultado h2{font-family:var(--display);font-weight:400;font-size:clamp(1.4rem,4vw,2rem);color:var(--cobalto);margin:1rem 0 .6rem;line-height:1.2}
+.resultado .mensagem{color:#3C4650;max-width:46ch;margin:0 auto 1.8rem}
+
+.revisao{text-align:left;margin:2rem 0;border-top:1px solid var(--nevoa);padding-top:1.5rem}
+.revisao h3{font-family:var(--util);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);margin-bottom:1rem}
+.item-rev{padding:.9rem 0;border-bottom:1px solid var(--nevoa)}
+.item-rev:last-child{border-bottom:none}
+.item-rev p{margin:0}
+.item-rev .q{font-weight:700;font-size:.95rem;color:var(--cobalto);margin-bottom:.3rem}
+.item-rev .a{font-size:.9rem;color:#4A5560}
+.item-rev .a em{font-style:normal;color:var(--verde);font-weight:700}
+
+.acoes{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+
+/* ---------- rodapé ---------- */
+footer{
+  flex:0 0 auto;
+  width:var(--medida);margin:0 auto;padding:1.8rem 0;
+  font-size:.8rem;color:#5A6570;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  border-top:1px solid var(--nevoa);
+}
+
+.oculto{display:none !important}
+
+/* a dica de teclado só faz sentido onde há teclado */
+@media(hover:none),(max-width:640px){#dica-teclado{display:none}}
+
+@media(prefers-reduced-motion:reduce){
+  .barra i,.opcao,.btn{transition:none}
+  .opcao:hover:not(:disabled),.btn:hover:not(:disabled){transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-int">
+    <a class="marca" href="index.html" aria-label="Tiago Veras — início">
+      <img src="logo-tiago-tils.png" width="760" height="448" alt="Tiago TILS — Tiago Veras, tradutor e intérprete de Libras">
+      <span>Intérprete de Libras<br>São Luís · MA</span>
+    </a>
+    <a class="voltar" href="jogos.html">← Todos os jogos</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= CAPA ================= -->
+  <section class="cartao capa" id="tela-capa">
+    <p class="selo">Jogo 01 · Setembro Surdo</p>
+    <h1>Quiz do Setembro Azul</h1>
+    <p class="sub">Quinze perguntas sobre as datas de setembro, a Libras e a história da educação de surdos. Cada resposta vem com explicação.</p>
+
+    <div class="ficha">
+      <div><b>Indicado para</b><span>Anos finais, ensino médio e cursos de Libras</span></div>
+      <div><b>Duração</b><span>Cerca de 20 minutos</span></div>
+      <div><b>Perguntas</b><span>15, com explicação</span></div>
+      <div><b>Como jogar</b><span>Individual ou projetado para a turma</span></div>
+    </div>
+
+    <div class="instrucoes">
+      <b>Antes de começar</b>
+      <ul>
+        <li>Escolha uma alternativa por pergunta. Não dá para voltar atrás depois de responder.</li>
+        <li>A explicação aparece logo após a escolha, com acerto ou erro.</li>
+        <li>No fim, você vê a pontuação e pode revisar o que errou.</li>
+        <li>Jogando com a turma, leia a pergunta em voz alta e em Libras antes de votarem.</li>
+      </ul>
+    </div>
+
+    <button class="btn btn-1" id="btn-comecar">Começar o quiz</button>
+  </section>
+
+  <!-- ================= PERGUNTAS ================= -->
+  <section id="tela-jogo" class="oculto">
+    <div class="progresso">
+      <div class="progresso-topo">
+        <span id="contador">Pergunta 1 de 15</span>
+        <span id="placar" class="placar">0 acertos</span>
+      </div>
+      <div class="barra"><i id="barra-preenchida"></i></div>
+    </div>
+
+    <div class="cartao">
+      <p class="tema" id="tema"></p>
+      <h2 class="pergunta" id="pergunta"></h2>
+
+      <div class="opcoes" id="opcoes"></div>
+
+      <div id="retorno" class="oculto" aria-live="polite"></div>
+
+      <div class="rodape-pergunta">
+        <span class="placar" id="dica-teclado">Use as teclas 1 a 4 para responder</span>
+        <button class="btn btn-1 oculto" id="btn-proxima">Próxima →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESULTADO ================= -->
+  <section class="cartao resultado oculto" id="tela-fim">
+    <p class="nota"><span id="nota-num">0</span><small>/15</small></p>
+    <h2 id="titulo-fim"></h2>
+    <p class="mensagem" id="mensagem-fim"></p>
+
+    <div class="revisao oculto" id="bloco-revisao">
+      <h3>O que revisar</h3>
+      <div id="lista-revisao"></div>
+    </div>
+
+    <div class="acoes">
+      <button class="btn btn-1" id="btn-reiniciar">Jogar de novo</button>
+      <a class="btn btn-2" href="jogos.html">Outros jogos</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Tiago Ferreira Veras · Uso livre em sala de aula</p>
+  <p><a href="index.html" style="color:inherit">tiagotils.com.br</a></p>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var PERGUNTAS = [
+    {
+      tema: "As datas de setembro",
+      q: "Em que dia se comemora o Dia Nacional dos Surdos no Brasil?",
+      opcoes: ["21 de setembro", "23 de setembro", "26 de setembro", "30 de setembro"],
+      certa: 2,
+      exp: "O Dia Nacional dos Surdos é 26 de setembro, instituído pela Lei nº 11.796, de 29 de outubro de 2008."
+    },
+    {
+      tema: "As datas de setembro",
+      q: "Por que o 26 de setembro foi escolhido como data nacional?",
+      opcoes: [
+        "É a data da Lei de Libras",
+        "É a data de fundação da primeira escola de surdos do Brasil, em 1857",
+        "É o aniversário de um líder do movimento surdo",
+        "Foi a data escolhida pela ONU"
+      ],
+      certa: 1,
+      exp: "Em 26 de setembro de 1857 foi fundado, no Rio de Janeiro, o Imperial Instituto de Surdos-Mudos, hoje Instituto Nacional de Educação de Surdos, o INES."
+    },
+    {
+      tema: "As datas de setembro",
+      q: "O que se celebra internacionalmente em 23 de setembro?",
+      opcoes: [
+        "O Dia Internacional das Línguas de Sinais",
+        "O Dia do Tradutor e Intérprete",
+        "O Dia Internacional da Pessoa com Deficiência",
+        "O Dia do Professor de Libras"
+      ],
+      certa: 0,
+      exp: "A data foi proclamada pela Assembleia Geral da ONU em 2017 e celebrada pela primeira vez em 2018. Ela marca a fundação da Federação Mundial de Surdos, em 23 de setembro de 1951."
+    },
+    {
+      tema: "As datas de setembro",
+      q: "A data internacional se chama Dia das Línguas de Sinais, no plural. Por quê?",
+      opcoes: [
+        "Porque cada estado brasileiro tem a sua",
+        "Porque existe uma versão falada e uma escrita",
+        "Porque a ONU tem várias línguas oficiais",
+        "Porque a ONU reconhece mais de trezentas línguas de sinais no mundo"
+      ],
+      certa: 3,
+      exp: "São mais de trezentas línguas de sinais diferentes. O plural no nome da data existe justamente para afirmar essa diversidade."
+    },
+    {
+      tema: "A língua",
+      q: "A Libras é universal, entendida por surdos de qualquer país?",
+      opcoes: [
+        "Sim, é a mesma no mundo inteiro",
+        "Não, cada país tem sua própria língua de sinais",
+        "Sim, desde que foi oficializada em 2002",
+        "Só na América Latina"
+      ],
+      certa: 1,
+      exp: "Libras significa Língua Brasileira de Sinais. Assim como o português não é universal, ela também não é: cada comunidade surda desenvolveu a sua língua, com história própria."
+    },
+    {
+      tema: "A língua",
+      q: "Libras é uma língua ou uma linguagem?",
+      opcoes: [
+        "Linguagem, porque usa gestos",
+        "Uma forma de representar o português com as mãos",
+        "Língua, com gramática, léxico e estrutura próprios",
+        "Um código de comunicação para pessoas surdas"
+      ],
+      certa: 2,
+      exp: "A Libras é uma língua completa, com fonologia, morfologia e sintaxe próprias, independentes do português. Linguagem é qualquer sistema de transmissão de ideias; língua é o sistema de um povo."
+    },
+    {
+      tema: "A língua",
+      q: "Quantos parâmetros formam os sinais da Libras?",
+      opcoes: ["Três", "Quatro", "Cinco", "Sete"],
+      certa: 2,
+      exp: "São cinco: configuração de mão, ponto de articulação, movimento, orientação da palma e expressões não manuais. Eles formam o nível fonológico da língua."
+    },
+    {
+      tema: "A língua",
+      q: "As expressões faciais em Libras servem principalmente para:",
+      opcoes: [
+        "Demonstrar emoção, como um tempero na comunicação",
+        "Marcar gramática: negação, pergunta, intensidade",
+        "Ajudar quem faz leitura labial",
+        "Nada em especial, são opcionais"
+      ],
+      certa: 1,
+      exp: "As expressões não manuais são gramaticais. Um movimento de cabeça pode negar a frase inteira, e a marcação facial distingue uma pergunta de uma afirmação. Sinalizar com o rosto parado deixa a frase agramatical."
+    },
+    {
+      tema: "A língua",
+      q: "O alfabeto manual, ou datilologia, serve principalmente para:",
+      opcoes: [
+        "Substituir os sinais na conversa do dia a dia",
+        "Ensinar português escrito a pessoas surdas",
+        "Conversar com surdos que não sabem Libras",
+        "Soletrar nomes próprios, siglas e palavras sem sinal"
+      ],
+      certa: 3,
+      exp: "A datilologia é um recurso pontual de empréstimo entre as duas línguas. Soletrar frases inteiras trava a comunicação, com o mesmo efeito de falar português letra por letra."
+    },
+    {
+      tema: "Direitos e legislação",
+      q: "Qual lei reconhece a Libras como meio legal de comunicação e expressão no Brasil?",
+      opcoes: [
+        "Lei nº 10.436, de 2002",
+        "Lei nº 11.796, de 2008",
+        "Lei nº 12.319, de 2010",
+        "Lei nº 13.146, de 2015"
+      ],
+      certa: 0,
+      exp: "A Lei nº 10.436/2002 reconhece a Libras. A Lei nº 12.319/2010 regulamenta a profissão de tradutor e intérprete, e a Lei nº 13.146/2015 é a Lei Brasileira de Inclusão."
+    },
+    {
+      tema: "História da educação de surdos",
+      q: "O que foi o Congresso de Milão, em 1880?",
+      opcoes: [
+        "O encontro que criou a Libras",
+        "A fundação da Federação Mundial de Surdos",
+        "Um congresso que decidiu proibir as línguas de sinais nas escolas",
+        "A primeira escola de surdos da Europa"
+      ],
+      certa: 2,
+      exp: "O congresso determinou que a educação de surdos deveria seguir o método oral, marginalizando as línguas de sinais nas escolas por quase um século."
+    },
+    {
+      tema: "História da educação de surdos",
+      q: "Sobre a origem da cor azul do Setembro Azul, é correto afirmar que:",
+      opcoes: [
+        "A história da faixa azul usada por nazistas circula muito, mas não tem fonte primária comprovada",
+        "Está documentada em arquivos oficiais alemães",
+        "Foi definida pela ONU em 2017",
+        "Vem das cores da bandeira do INES"
+      ],
+      certa: 0,
+      exp: "A explicação da faixa azul se repete de site em site sem chegar a um documento ou fotografia de arquivo. A perseguição a pessoas surdas foi real, mas aconteceu por outro instrumento."
+    },
+    {
+      tema: "História da educação de surdos",
+      q: "Qual instrumento legal atingiu diretamente pessoas surdas na Alemanha nazista?",
+      opcoes: [
+        "As Leis de Nuremberg, de 1935",
+        "A Lei de Prevenção de Doenças Hereditárias, de 1933, que listava a surdez hereditária",
+        "O programa de eutanásia T4, que tinha a surdez entre seus critérios",
+        "Nenhum: pessoas surdas não foram perseguidas"
+      ],
+      certa: 1,
+      exp: "A lei de julho de 1933 autorizava a esterilização compulsória, e a surdez hereditária era o sétimo item da lista. A aplicação foi ainda mais ampla: audição reduzida também podia levar ao procedimento."
+    },
+    {
+      tema: "Setembro Surdo na prática",
+      q: "Parte da comunidade surda prefere o nome Setembro Surdo ao Setembro Azul porque:",
+      opcoes: [
+        "O azul já é usado pelo Novembro Azul",
+        "A Federação Mundial de Surdos pediu a mudança",
+        "O nome com cor lembra campanhas de saúde e sugere a surdez como doença a prevenir",
+        "Azul não é uma cor da cultura surda"
+      ],
+      certa: 2,
+      exp: "Outubro Rosa, Novembro Azul, Setembro Amarelo: o formato remete a prevenção de doenças. O movimento surdo não reivindica cura, e sim língua, cultura e direitos linguísticos."
+    },
+    {
+      tema: "Setembro Surdo na prática",
+      q: "Qual prática escolar de setembro é mais criticada pela comunidade surda?",
+      opcoes: [
+        "Convidar uma pessoa surda para conversar com a turma",
+        "Ensinar vocabulário de Libras ligado ao cotidiano da escola",
+        "Discutir a Lei de Libras nas aulas",
+        "Apresentação de música sinalizada para plateia ouvinte"
+      ],
+      certa: 3,
+      exp: "A canção se estrutura em ritmo e melodia, elementos que não organizam a Libras. O resultado costuma emocionar a plateia ouvinte enquanto o estudante surdo assiste a algo que não foi feito para ele."
+    }
+  ];
+
+  var TOTAL = PERGUNTAS.length;
+  var LETRAS = ["A","B","C","D"];
+
+  var atual = 0, acertos = 0, respondida = false, erros = [];
+  var ordemAtual = [];
+
+  var el = {
+    capa:      document.getElementById("tela-capa"),
+    jogo:      document.getElementById("tela-jogo"),
+    fim:       document.getElementById("tela-fim"),
+    contador:  document.getElementById("contador"),
+    placar:    document.getElementById("placar"),
+    barra:     document.getElementById("barra-preenchida"),
+    tema:      document.getElementById("tema"),
+    pergunta:  document.getElementById("pergunta"),
+    opcoes:    document.getElementById("opcoes"),
+    retorno:   document.getElementById("retorno"),
+    proxima:   document.getElementById("btn-proxima"),
+    dica:      document.getElementById("dica-teclado"),
+    notaNum:   document.getElementById("nota-num"),
+    tituloFim: document.getElementById("titulo-fim"),
+    msgFim:    document.getElementById("mensagem-fim"),
+    blocoRev:  document.getElementById("bloco-revisao"),
+    listaRev:  document.getElementById("lista-revisao")
+  };
+
+  function embaralhar(n){
+    var a = [];
+    for (var i = 0; i < n; i++) { a.push(i); }
+    for (var j = a.length - 1; j > 0; j--) {
+      var k = Math.floor(Math.random() * (j + 1));
+      var t = a[j]; a[j] = a[k]; a[k] = t;
+    }
+    return a;
+  }
+
+  function mostrarPergunta(){
+    var p = PERGUNTAS[atual];
+    respondida = false;
+
+    el.contador.textContent = "Pergunta " + (atual + 1) + " de " + TOTAL;
+    el.placar.textContent = acertos + (acertos === 1 ? " acerto" : " acertos");
+    el.barra.style.width = ((atual / TOTAL) * 100) + "%";
+
+    el.tema.textContent = p.tema;
+    el.pergunta.textContent = p.q;
+
+    el.retorno.className = "oculto";
+    el.retorno.innerHTML = "";
+    el.proxima.classList.add("oculto");
+    el.dica.classList.remove("oculto");
+
+    el.opcoes.innerHTML = "";
+    ordemAtual = embaralhar(p.opcoes.length);
+
+    ordemAtual.forEach(function(indiceOriginal, posicao){
+      var b = document.createElement("button");
+      b.className = "opcao";
+      b.type = "button";
+      b.innerHTML = '<span class="letra" aria-hidden="true">' + LETRAS[posicao] + '</span>' +
+                    '<span>' + p.opcoes[indiceOriginal] + '</span>';
+      b.addEventListener("click", function(){ responder(posicao); });
+      el.opcoes.appendChild(b);
+    });
+  }
+
+  function responder(posicao){
+    if (respondida) { return; }
+    respondida = true;
+
+    var p = PERGUNTAS[atual];
+    var escolhaOriginal = ordemAtual[posicao];
+    var acertou = (escolhaOriginal === p.certa);
+    var posicaoDaCerta = ordemAtual.indexOf(p.certa);
+
+    var botoes = el.opcoes.querySelectorAll(".opcao");
+    for (var i = 0; i < botoes.length; i++) {
+      botoes[i].disabled = true;
+      if (i === posicaoDaCerta) {
+        botoes[i].classList.add("certa");
+        botoes[i].insertAdjacentHTML("beforeend",
+          '<span class="marca-resp">' + (acertou ? "sua resposta" : "correta") + '</span>');
+      } else if (i === posicao) {
+        botoes[i].classList.add("errada");
+        botoes[i].insertAdjacentHTML("beforeend", '<span class="marca-resp">sua resposta</span>');
+      }
+    }
+
+    if (acertou) {
+      acertos++;
+    } else {
+      erros.push({ q: p.q, certa: p.opcoes[p.certa], exp: p.exp });
+    }
+
+    el.retorno.className = "retorno " + (acertou ? "acerto" : "erro");
+    el.retorno.innerHTML = "<b>" + (acertou ? "Certo" : "Não foi dessa vez") + "</b><p>" + p.exp + "</p>";
+
+    el.placar.textContent = acertos + (acertos === 1 ? " acerto" : " acertos");
+    el.barra.style.width = (((atual + 1) / TOTAL) * 100) + "%";
+
+    el.dica.classList.add("oculto");
+    el.proxima.classList.remove("oculto");
+    el.proxima.textContent = (atual + 1 < TOTAL) ? "Próxima →" : "Ver resultado →";
+    el.proxima.focus();
+  }
+
+  function proxima(){
+    atual++;
+    if (atual < TOTAL) {
+      mostrarPergunta();
+      el.pergunta.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } else {
+      mostrarResultado();
+    }
+  }
+
+  function mostrarResultado(){
+    el.jogo.classList.add("oculto");
+    el.fim.classList.remove("oculto");
+    el.notaNum.textContent = acertos;
+
+    var titulo, msg;
+    if (acertos === TOTAL) {
+      titulo = "Gabaritou";
+      msg = "Você domina o assunto. Que tal conduzir a atividade de Setembro Surdo na sua escola?";
+    } else if (acertos >= 12) {
+      titulo = "Muito bom";
+      msg = "Você acertou a maior parte. Vale revisar os pontos abaixo antes de levar o tema para a turma.";
+    } else if (acertos >= 8) {
+      titulo = "No caminho";
+      msg = "A base está formada. As perguntas abaixo mostram o que ainda merece estudo.";
+    } else {
+      titulo = "Vale voltar ao conteúdo";
+      msg = "Este quiz cobre bastante coisa de uma vez. Revise os pontos abaixo e jogue outra vez.";
+    }
+    el.tituloFim.textContent = titulo;
+    el.msgFim.textContent = msg;
+
+    if (erros.length > 0) {
+      el.blocoRev.classList.remove("oculto");
+      el.listaRev.innerHTML = "";
+      erros.forEach(function(e){
+        var d = document.createElement("div");
+        d.className = "item-rev";
+        d.innerHTML = '<p class="q">' + e.q + '</p>' +
+                      '<p class="a"><em>' + e.certa + '</em> &mdash; ' + e.exp + '</p>';
+        el.listaRev.appendChild(d);
+      });
+    } else {
+      el.blocoRev.classList.add("oculto");
+    }
+
+    el.fim.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function iniciar(){
+    atual = 0; acertos = 0; erros = []; respondida = false;
+    el.capa.classList.add("oculto");
+    el.fim.classList.add("oculto");
+    el.jogo.classList.remove("oculto");
+    mostrarPergunta();
+    el.jogo.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  document.getElementById("btn-comecar").addEventListener("click", iniciar);
+  document.getElementById("btn-reiniciar").addEventListener("click", iniciar);
+  el.proxima.addEventListener("click", proxima);
+
+  document.addEventListener("keydown", function(ev){
+    if (el.jogo.classList.contains("oculto")) { return; }
+    if (!respondida && ev.key >= "1" && ev.key <= "4") {
+      var idx = parseInt(ev.key, 10) - 1;
+      var botoes = el.opcoes.querySelectorAll(".opcao");
+      if (botoes[idx]) { responder(idx); }
+    } else if (respondida && (ev.key === "Enter" || ev.key === " ")) {
+      if (document.activeElement !== el.proxima) {
+        ev.preventDefault();
+        proxima();
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
