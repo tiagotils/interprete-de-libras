@@ -219,6 +219,32 @@ h3{font-family:var(--display);font-weight:600;font-size:1.18rem;color:var(--coba
 .foto-lateral{margin-top:1.8rem;border:1px solid var(--nevoa)}
 .foto-lateral figcaption{font-family:var(--util);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azulejo);padding:.7rem .2rem 0}
 
+/* player de video com fachada (sem carregar o YouTube antes do clique) */
+.player{position:relative;aspect-ratio:16/9;background:var(--cobalto);border:1px solid var(--nevoa);overflow:hidden;margin-top:1.8rem}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.player-capa{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:var(--cobalto);cursor:pointer;display:block;color:inherit}
+.player-capa img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,opacity .3s ease}
+.player-capa:hover img,.player-capa:focus-visible img{transform:scale(1.03);opacity:.8}
+.player-capa:focus-visible{outline:3px solid var(--sol);outline-offset:-3px}
+.player-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:var(--ocre);display:grid;place-items:center;box-shadow:0 10px 30px rgba(8,20,36,.45);transition:transform .25s ease,background .25s ease}
+.player-capa:hover .player-play,.player-capa:focus-visible .player-play{transform:translate(-50%,-50%) scale(1.09);background:#D89646}
+.player-play svg{width:34px;height:34px;fill:#15181D;margin-left:4px}
+.player-dica{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1.2rem .95rem;background:linear-gradient(transparent,rgba(8,20,36,.88));color:var(--caiacao);font-family:var(--util);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;text-align:left}
+.player-nota{font-family:var(--util);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azulejo);margin-top:.9rem}
+.observar{margin-top:2.2rem;border-top:2px solid var(--ocre);padding-top:1.3rem}
+.observar dt{font-family:var(--util);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--azulejo);margin-bottom:.35rem}
+.observar dd{margin:0 0 1.3rem;font-size:.92rem;color:#3C4650}
+.observar dd:last-child{margin-bottom:0}
+@media(max-width:560px){
+  .player-play{width:58px;height:58px}
+  .player-play svg{width:26px;height:26px}
+  .player-dica{font-size:.62rem;letter-spacing:.12em}
+}
+@media(prefers-reduced-motion:reduce){
+  .player-capa:hover img,.player-capa:focus-visible img,
+  .player-capa:hover .player-play,.player-capa:focus-visible .player-play{transform:none}
+}
+
 /* serviços */
 .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--nevoa);margin-top:2.6rem;border:1px solid var(--nevoa)}
 .card{background:var(--caiacao);padding:1.7rem 1.5rem;transition:background .25s}
@@ -371,6 +397,33 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
   ]
 }
 </script>
+
+<!-- VideoObject: o campo "name" repete o titulo visivel na pagina e "uploadDate" ainda falta.
+     Informe o titulo real do video e a data de publicacao para o rich result ficar elegivel. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "V\u00eddeo \u00b7 Tiago Veras, int\u00e9rprete de Libras em S\u00e3o Lu\u00eds",
+  "description": "Apresenta\u00e7\u00e3o em v\u00eddeo de Tiago Veras, tradutor e int\u00e9rprete de Libras em S\u00e3o Lu\u00eds (MA), com atua\u00e7\u00e3o desde 2010.",
+  "thumbnailUrl": [
+    "https://i.ytimg.com/vi/pNrYg6lq_-Q/maxresdefault.jpg",
+    "https://i.ytimg.com/vi/pNrYg6lq_-Q/hqdefault.jpg"
+  ],
+  "embedUrl": "https://www.youtube.com/embed/pNrYg6lq_-Q",
+  "url": "https://tiagotils.com.br/#video",
+  "inLanguage": "pt-BR",
+  "author": {
+    "@type": "Person",
+    "name": "Tiago Ferreira Veras",
+    "url": "https://tiagotils.com.br/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Tiago Ferreira Veras"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -382,6 +435,7 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
     </a>
     <nav class="menu" aria-label="Navegação principal">
       <a href="#sobre">Sobre</a>
+      <a href="#video">Vídeo</a>
       <a href="#servicos">Serviços</a>
       <a href="#atuacao">Atuação</a>
       <a href="#publicacoes">Publicações</a>
@@ -439,6 +493,47 @@ footer{width:var(--medida);margin:0 auto;padding:2.2rem 0;font-size:.82rem;color
       <p class="destaque">Interpretar é mobilizar competência tradutória — e ela não se sustenta sem convivência com a comunidade surda.</p>
       <p>Essa competência reúne o domínio das duas línguas, o conhecimento sobre o assunto, o uso de instrumentos de pesquisa e, acima de tudo, a capacidade estratégica de decidir sob pressão de tempo.</p>
       <p>Na prática, isso significa estudos lexicais antes do evento, conhecer as variações regionais da Libras e, principalmente, trabalhar com consultor surdo, que confere maior controle de qualidade à nossa atuação.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloco rev" id="video">
+  <div class="duas">
+    <div>
+      <p class="rotulo">Vídeo</p>
+      <h2>Interpretação se avalia vendo</h2>
+      <dl class="observar">
+        <dt>Espaço de sinalização</dt>
+        <dd>O espaço à frente do corpo é usado para organizar quem fala, onde e quando. Sinalizar tudo no mesmo ponto embaralha o sentido.</dd>
+        <dt>Expressão facial</dt>
+        <dd>Em Libras ela marca pergunta, negação, condição e intensidade. É gramática, não emoção — e a sua ausência muda o que foi dito.</dd>
+        <dt>Ritmo e pausa</dt>
+        <dd>Mostram se o intérprete entendeu o conteúdo ou está apenas acompanhando as palavras uma a uma.</dd>
+      </dl>
+    </div>
+    <div class="texto">
+      <p>Currículo e formação dizem de onde vem o preparo, mas não mostram o que acontece na hora. Em Libras, a avaliação passa pelo uso do espaço de sinalização, pelo ritmo, pela expressão facial — que é gramática, não ênfase — e pela clareza na construção dos conceitos.</p>
+      <p>O vídeo abaixo existe para isso: ver antes de contratar.</p>
+
+      <!-- INICIO DO PLAYER -->
+      <figure style="margin:0">
+        <div class="player" data-video="pNrYg6lq_-Q">
+          <button type="button" class="player-capa" aria-label="Reproduzir o vídeo de apresentação de Tiago Veras, intérprete de Libras em São Luís">
+            <img src="https://i.ytimg.com/vi/pNrYg6lq_-Q/maxresdefault.jpg"
+                 onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/pNrYg6lq_-Q/hqdefault.jpg'"
+                 width="1280" height="720" loading="lazy" decoding="async" alt="">
+            <span class="player-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span class="player-dica">Clique para assistir</span>
+          </button>
+        </div>
+        <!-- TITULO PROVISORIO: trocar pelo titulo real do video no YouTube (e tambem no JSON-LD VideoObject, no <head>) -->
+        <figcaption class="player-nota">Vídeo · Tiago Veras, intérprete de Libras em São Luís</figcaption>
+      </figure>
+      <!-- FIM DO PLAYER -->
+
+      <p style="margin-top:1.3rem"><a href="https://www.youtube.com/watch?v=pNrYg6lq_-Q" target="_blank" rel="noopener"><strong>Assistir no YouTube →</strong></a></p>
     </div>
   </div>
 </section>
@@ -723,6 +818,26 @@ if('IntersectionObserver'in window){
   },{threshold:.12});
   alvos.forEach(a=>obs.observe(a));
 }else{alvos.forEach(a=>a.classList.add('on'))}
+
+/* troca a fachada pelo iframe somente no clique: o YouTube so e carregado se o visitante quiser */
+document.querySelectorAll('.player').forEach(function(caixa){
+  var botao=caixa.querySelector('.player-capa');
+  if(!botao)return;
+  botao.addEventListener('click',function(){
+    var id=caixa.getAttribute('data-video');
+    if(!id)return;
+    var quadro=document.createElement('iframe');
+    quadro.src='https://www.youtube-nocookie.com/embed/'+id+
+               '?autoplay=1&rel=0&modestbranding=1&playsinline=1&hl=pt-BR&cc_lang_pref=pt&cc_load_policy=1';
+    quadro.title='Vídeo de Tiago Veras, intérprete de Libras em São Luís';
+    quadro.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    quadro.setAttribute('allowfullscreen','');
+    quadro.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+    caixa.textContent='';
+    caixa.appendChild(quadro);
+    try{gtag('event','play_video',{'video_id':id});}catch(e){}
+  });
+});
 </script>
 <a class="zap" href="https://wa.me/5598988253316"
    onclick="return gtag_report_conversion('https://wa.me/5598988253316');"
