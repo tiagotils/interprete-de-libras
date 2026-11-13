@@ -383,6 +383,7 @@ body.editing .ev .yr{transform:rotate(3deg) scale(1)}
 .edit-hot button{position:absolute; left:10px; top:10px; font:700 clamp(11px,1.05vw,15px) var(--text); color:#0F1B15; background:#F4B41A; border:0; border-radius:999px; padding:7px 14px; opacity:0; transition:opacity .2s; white-space:nowrap}
 .edit-hot:hover button, .edit-hot button:focus-visible, body.editing .edit-hot button{opacity:1}
 .toast{position:fixed; left:50%; top:18px; transform:translateX(-50%); z-index:1003; background:#FBF3DC; color:#0F1B15; font:700 clamp(12px,1.2vw,16px) var(--text); padding:10px 18px; border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,.5)}
+#sndBtn .mute{display:none} #sndBtn.off .on{display:none} #sndBtn.off .mute{display:inline}
 @media print{ .hud,.tap,.progress,.help,.edit-hot,.toast,.timer,.award{display:none !important} .explain,.ans,.who,.gw{visibility:visible !important; opacity:1 !important} }
 </style>
 </head>
@@ -794,6 +795,7 @@ body.editing .ev .yr{transform:rotate(3deg) scale(1)}
   <button data-nav="-1" aria-label="Slide anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
   <span id="count">1 / 24</span>
   <button data-nav="1" aria-label="Próximo slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  <button id="sndBtn" aria-label="Desligar o som" aria-pressed="true" title="Som (M)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="on" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mute" d="M17 9l5 6M22 9l-5 6"/></svg></button>
   <button id="fsBtn" aria-label="Tela cheia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
   <button id="helpBtn" aria-label="Atalhos" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9a3 3 0 1 1 4.5 2.6c-.9.6-1.5 1.2-1.5 2.4M12 18.5v.1"/></svg></button>
 </nav>
@@ -806,6 +808,7 @@ body.editing .ev .yr{transform:rotate(3deg) scale(1)}
     <dt>Relógio</dt><dd>clique para iniciar, pausar ou zerar</dd>
     <dt>R</dt><dd>reinicia as cartas do slide atual</dd>
     <dt>F</dt><dd>tela cheia</dd>
+    <dt>M</dt><dd>liga ou desliga o som (trilha e efeitos)</dd>
     <dt>E</dt><dd>editar os textos. Ctrl+S salva uma cópia do arquivo com as mudanças</dd>
   </dl>
 </div>
@@ -860,6 +863,7 @@ function renderTeams() {
 }
 function addScore(t, d) {
   game.scores[t] = Math.max(0, game.scores[t] + d);
+  if (d > 0) Sound.point(); else if (d < 0) Sound.minus();
   persist();
   const chip = teamsEl.children[t];
   if (chip) { chip.querySelector('.sc').textContent = game.scores[t]; chip.classList.remove('bump'); void chip.offsetWidth; chip.classList.add('bump'); }
@@ -886,6 +890,109 @@ function refreshAwards() {
     s.appendChild(bar);
   });
 }
+
+/* --- som: trilha e efeitos sintetizados no navegador (sem arquivos de áudio) --- */
+const Sound = (() => {
+  const KEY = 'consciencia-em-jogo-som';
+  let on = true; try { on = localStorage.getItem(KEY) !== 'off'; } catch (e) {}
+  let ctx = null, music = null, fx = null, timerId = 0, step = 0, nextT = 0, ducked = false;
+  const STEP = 60 / 96 / 2;                       // colcheia a 96 bpm
+  const hz = n => 440 * Math.pow(2, n / 12);      // n = semitons a partir do Lá 440
+  const MEL = [0,null,3,null,7,null,5,3,  0,null,null,3,5,null,3,null,  7,null,10,null,12,null,10,7,  5,null,3,null,0,null,null,null];
+  const BASS = [-24,-24,-21,-17];                 // Lá, Lá, Dó, Sol (um por compasso)
+  const KICK = [0,3,6], HI = [2,5,7];
+
+  function init() {
+    if (ctx) return;
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    ctx = new AC();
+    const master = ctx.createGain(); master.gain.value = .9; master.connect(ctx.destination);
+    music = ctx.createGain(); music.gain.value = .8; fx = ctx.createGain(); fx.gain.value = .9;
+    const dly = ctx.createDelay(1); dly.delayTime.value = STEP * 3;
+    const fb = ctx.createGain(); fb.gain.value = .32; dly.connect(fb); fb.connect(dly);
+    const wet = ctx.createGain(); wet.gain.value = .35; dly.connect(wet); wet.connect(music);
+    music.connect(master); fx.connect(master);
+    music._dly = dly;
+    nextT = ctx.currentTime + .15;
+    timerId = setInterval(tick, 90);
+    if (!on) ctx.suspend();
+  }
+  function pluck(n, t, vol, dest) {
+    const o = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'triangle'; o2.type = 'sine'; o.frequency.value = hz(n); o2.frequency.value = hz(n) * 2;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .012);
+    g.gain.exponentialRampToValueAtTime(.0008, t + .9);
+    const g2 = ctx.createGain(); g2.gain.value = .25; o2.connect(g2); g2.connect(g);
+    o.connect(g); g.connect(dest); if (dest === music) g.connect(music._dly);
+    o.start(t); o2.start(t); o.stop(t + 1); o2.stop(t + 1);
+  }
+  function drum(t, f0, f1, vol, len) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine'; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + len * .6);
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.0008, t + len);
+    o.connect(g); g.connect(music); o.start(t); o.stop(t + len + .02);
+  }
+  function pad(n, t, dur) {
+    [n, n + 7].forEach(m => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'triangle'; o.frequency.value = hz(m);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.06, t + .5);
+      g.gain.linearRampToValueAtTime(0, t + dur);
+      o.connect(g); g.connect(music); o.start(t); o.stop(t + dur + .05);
+    });
+  }
+  function tick() {
+    if (!ctx || ctx.state !== 'running') return;
+    while (nextT < ctx.currentTime + .25) {
+      const i = step % 32, bar = Math.floor(i / 8), pos = i % 8;
+      if (pos === 0) pad(BASS[bar], nextT, STEP * 8 * 1.05);
+      if (KICK.includes(pos)) drum(nextT, 130, 52, .55, .28);
+      if (HI.includes(pos)) drum(nextT, 330, 210, .12, .08);
+      if (pos === 0 || pos === 4) pluck(BASS[bar] + 12, nextT, .05, music);
+      if (MEL[i] !== null) pluck(MEL[i], nextT, .1, music);
+      nextT += STEP; step++;
+    }
+  }
+  function note(n, t, len, vol, type) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type || 'triangle'; o.frequency.value = hz(n);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .01);
+    g.gain.exponentialRampToValueAtTime(.0008, t + len);
+    o.connect(g); g.connect(fx); o.start(t); o.stop(t + len + .02);
+  }
+  const ok = () => on && ctx && ctx.state === 'running';
+  const api = {
+    get on() { return on; },
+    unlock() { init(); if (ctx && on && ctx.state === 'suspended') ctx.resume(); },
+    toggle() {
+      on = !on; try { localStorage.setItem(KEY, on ? 'on' : 'off'); } catch (e) {}
+      init(); if (ctx) { if (on) ctx.resume(); else ctx.suspend(); }
+      api.paint(); return on;
+    },
+    paint() {
+      const b = document.getElementById('sndBtn'); if (!b) return;
+      b.setAttribute('aria-pressed', String(on));
+      b.setAttribute('aria-label', on ? 'Desligar o som' : 'Ligar o som');
+      b.classList.toggle('off', !on);
+    },
+    duck(v) { ducked = v; if (ctx) music.gain.setTargetAtTime(v ? .28 : .8, ctx.currentTime, .4); },
+    point() { if (!ok()) return; const t = ctx.currentTime; note(7, t, .35, .22); note(12, t + .1, .5, .22); note(19, t + .2, .6, .16); },
+    minus() { if (!ok()) return; const t = ctx.currentTime; note(0, t, .3, .2); note(-5, t + .12, .4, .18); },
+    tick() { if (!ok()) return; note(15, ctx.currentTime, .09, .14, 'square'); },
+    end() { if (!ok()) return; const t = ctx.currentTime; [12, 7, 0].forEach((n, i) => note(n, t + i * .22, .4, .26)); },
+    fanfare() {
+      if (!ok()) return; const t = ctx.currentTime;
+      [0, 3, 7, 12, 15, 19, 24].forEach((n, i) => note(n, t + .15 + i * .11, .9, .2));
+      for (let i = 0; i < 6; i++) drum(t + i * .09, 140, 60, .5, .2);
+    }
+  };
+  ['pointerdown', 'keydown'].forEach(ev => addEventListener(ev, () => api.unlock(), { capture: true }));
+  document.addEventListener('visibilitychange', () => {
+    if (!ctx || !on) return;
+    if (document.hidden) ctx.suspend(); else ctx.resume();
+  });
+  return api;
+})();
 const timers = [];
 slides.forEach(s => {
   if (!s.dataset.timer) return;
@@ -895,12 +1002,13 @@ slides.forEach(s => {
   const sp = document.createElement('span'); b.appendChild(sp); s.appendChild(b);
   const t = { left: total, id: 0,
     draw() { sp.textContent = t.left; b.style.setProperty('--p', t.left / total); b.classList.toggle('done', t.left === 0); },
-    stop() { clearInterval(t.id); t.id = 0; },
+    stop() { clearInterval(t.id); t.id = 0; Sound.duck(false); },
     reset() { t.stop(); t.left = total; t.draw(); },
     toggle() {
       if (t.left === 0) return t.reset();
       if (t.id) return t.stop();
-      t.id = setInterval(() => { t.left--; t.draw(); if (t.left <= 0) t.stop(); }, 1000);
+      Sound.duck(true);
+      t.id = setInterval(() => { t.left--; t.draw(); if (t.left <= 0) { t.stop(); Sound.end(); } else if (t.left <= 5) Sound.tick(); }, 1000);
     } };
   b.addEventListener('click', () => { if (!editing) t.toggle(); });
   t.draw(); timers.push(t);
@@ -920,7 +1028,7 @@ function go(n) {
   $$('#trail i').forEach((d, i) => { d.classList.toggle('done', i + 1 < ph); d.classList.toggle('now', i + 1 === ph); });
   $('#count').textContent = `${cur + 1} / ${slides.length}`;
   $('#progress').style.width = `${(cur + 1) / slides.length * 100}%`;
-  if (s.id === 'podio') { renderPodium(); confetti(s); }
+  if (s.id === 'podio') { renderPodium(); confetti(s); Sound.fanfare(); }
 }
 const next = () => go(cur + 1), prev = () => go(cur - 1);
 
@@ -1101,6 +1209,7 @@ addEventListener('keydown', e => {
   if (k === 'Home') return go(0);
   if (k === 'End') return go(slides.length - 1);
   if (k === 'f' || k === 'F') return fullscreen();
+  if (k === 'm' || k === 'M') return Sound.toggle();
   if (k === 'r' || k === 'R') { timers.forEach(t => t.reset()); return clearState(slides[cur], true); }
   const m = /^Digit([1-4])$/.exec(e.code);
   if (m) return addScore(m[1] - 1, e.shiftKey ? -5 : 5);
@@ -1112,6 +1221,8 @@ document.addEventListener('click', e => {
   if (nav) go(cur + (+nav.dataset.nav));
 });
 $('#fsBtn').addEventListener('click', fullscreen);
+$('#sndBtn').addEventListener('click', () => Sound.toggle());
+Sound.paint();
 $('#helpBtn').addEventListener('click', () => {
   const open = $('#help').classList.toggle('open');
   $('#helpBtn').setAttribute('aria-pressed', open);
