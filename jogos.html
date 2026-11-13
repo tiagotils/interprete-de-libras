@@ -33,8 +33,8 @@ function gtag_report_conversion(url) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Jogos para ensinar Libras | Tiago Veras</title>
-<meta name="description" content="Jogos gratuitos para ensinar Libras em sala de aula: atividades digitais para praticar vocabulário, alfabeto manual e parâmetros da língua, com orientações de uso para professores.">
+<title>Jogos para ensinar Libras e outros temas | Tiago Veras</title>
+<meta name="description" content="Jogos gratuitos para sala de aula: quiz do Setembro Azul sobre Libras e o jogo Consciência em Jogo, para o Dia da Consciência Negra, com orientações de uso para professores.">
 <meta name="author" content="Tiago Ferreira Veras">
 <link rel="canonical" href="https://tiagotils.com.br/jogos.html">
 <link rel="icon" href="favicon.ico" sizes="32x32">
@@ -57,7 +57,12 @@ function gtag_report_conversion(url) {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Jogos para ensinar Libras",
-  "description": "Coleção de jogos digitais gratuitos para o ensino da Língua Brasileira de Sinais em sala de aula.",
+  "description": "Coleção de jogos digitais gratuitos para sala de aula: Língua Brasileira de Sinais, cultura surda e Consciência Negra.",
+  "hasPart": [
+    { "@type": "LearningResource", "name": "Quiz do Setembro Azul", "url": "https://tiagotils.com.br/quiz-setembro-azul.html" },
+    { "@type": "LearningResource", "name": "Consciência em Jogo", "url": "https://tiagotils.com.br/consciencia-em-jogo.html" },
+    { "@type": "LearningResource", "name": "Consciência Negra: aula antes do jogo", "url": "https://tiagotils.com.br/consciencia-negra-aula.html" }
+  ],
   "url": "https://tiagotils.com.br/jogos.html",
   "inLanguage": "pt-BR",
   "isAccessibleForFree": true,
@@ -169,6 +174,9 @@ h3{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--coba
 }
 .btn-jogar{background:var(--verde);color:#FFFFFF}
 .btn-jogar:hover{background:#166459;color:#FFFFFF;transform:translateY(-2px)}
+.acoes{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn-aula{background:transparent;color:var(--verde);border:2px solid var(--verde);padding:.85rem 1.7rem}
+.btn-aula:hover{background:var(--verde);color:#FFFFFF;transform:translateY(-2px)}
 .aviso-link{font-size:.85rem;color:#5A6570;margin-top:.8rem}
 
 /* ---------- como usar ---------- */
@@ -262,7 +270,7 @@ footer{width:var(--medida);margin:0 auto;padding:2rem 0;font-size:.82rem;color:#
   <div class="abertura-int">
     <p class="selo">Material gratuito para professores</p>
     <h1>Jogos para ensinar Libras</h1>
-    <p>Atividades digitais para praticar a Língua Brasileira de Sinais em sala de aula. Abrem no navegador, sem instalar nada, e podem ser projetadas para a turma inteira ou usadas individualmente no celular.</p>
+    <p>Atividades digitais para a sala de aula, com foco em Libras, cultura surda e educação antirracista. Abrem no navegador, sem instalar nada, e podem ser projetadas para a turma inteira.</p>
   </div>
 </section>
 
@@ -276,11 +284,11 @@ footer{width:var(--medida);margin:0 auto;padding:2rem 0;font-size:.82rem;color:#
   </div>
 </section>
 
-<section class="bloco" id="jogo-01">
+<section class="bloco" id="jogos-disponiveis">
   <p class="rotulo">Disponível agora</p>
-  <h2>Jogo em destaque</h2>
+  <h2>Jogos disponíveis</h2>
 
-  <article class="jogo">
+  <article class="jogo" id="jogo-01">
     <div class="jogo-topo">
       <span class="jogo-num">Jogo 01</span>
       <span class="jogo-etiqueta">Setembro Surdo</span>
@@ -300,6 +308,31 @@ footer{width:var(--medida);margin:0 auto;padding:2rem 0;font-size:.82rem;color:#
     <a class="btn btn-jogar" href="quiz-setembro-azul.html">Jogar agora</a>
 
     <p class="aviso-link">Abre no navegador, sem instalar nada. Funciona no celular, e o som pode ser desligado a qualquer momento.</p>
+  </article>
+
+  <article class="jogo" id="jogo-02">
+    <div class="jogo-topo">
+      <span class="jogo-num">Jogo 02</span>
+      <span class="jogo-etiqueta">Consciência Negra</span>
+    </div>
+
+    <h3>Consciência em Jogo</h3>
+
+    <p class="descricao">Jogo de tabuleiro para o Dia da Consciência Negra, em 5 fases e 7 desafios: linha do tempo, “verdade ou mito?”, “quem sou eu?” com Maria Firmina dos Reis e um chute certeiro com dados do Censo 2022. As equipes marcam pontos, o professor conduz e a turma chega ao pódio. Acompanha uma aula em slides para apresentar antes de jogar.</p>
+
+    <div class="ficha">
+      <div><b>Indicado para</b><span>Ensino médio</span></div>
+      <div><b>Duração</b><span>Aula de 30 min e jogo de 50 min</span></div>
+      <div><b>Jogadores</b><span>Quatro equipes, conduzidas pelo professor</span></div>
+      <div><b>Recursos</b><span>Cronômetro, placar salvo no navegador e pódio final</span></div>
+    </div>
+
+    <div class="acoes">
+      <a class="btn btn-jogar" href="consciencia-em-jogo.html">Jogar agora</a>
+      <a class="btn btn-aula" href="consciencia-negra-aula.html">Ver a aula antes do jogo</a>
+    </div>
+
+    <p class="aviso-link">Feito para projetar em tela cheia, no computador (tecla F ou o botão no canto inferior). Avance com as setas do teclado. No celular, o jogo abre, mas o palco 16:9 fica pequeno.</p>
   </article>
 </section>
 
